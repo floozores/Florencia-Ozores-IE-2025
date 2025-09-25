@@ -3,24 +3,32 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Florencia — Portafolio</title>
-  <meta name="description" content="Portafolio académico y tareas de Florencia." />
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <title>Florencia Ozores — Portafolio</title>
+  <meta name="description" content="Portafolio académico y tareas de Florencia Ozores. Diseño minimal con enfoque tipográfico y p5.js." />
+  <!-- CSS con cache-busting para forzar actualización -->
+  <link rel="stylesheet" href="assets/css/styles.css?v=4" />
 </head>
 <body class="page">
-  <!-- Topbar móvil -->
+  <!-- AVISO si JS está deshabilitado -->
+  <noscript><style>.sidenav{position:static;height:auto}.topbar{display:block}</style>
+    <div style="padding:.6rem 1rem;background:#fff3cd;border-bottom:1px solid #ffe69c">
+      ⚠️ Para la mejor experiencia habilita JavaScript.
+    </div>
+  </noscript>
+
+  <!-- Topbar (móvil) -->
   <header class="topbar">
     <a href="#home" class="logo">FLORENCIA</a>
     <nav class="nav-mobile">
       <a href="#home" aria-current="page">Inicio</a>
       <a href="#trabajos">Trabajos</a>
       <a href="#tareas">Tareas</a>
-      <button id="theme-toggle" class="theme" aria-label="Tema">○</button>
+      <button id="theme-toggle" class="theme" aria-label="Cambiar tema">○</button>
     </nav>
   </header>
 
-  <!-- Índice lateral (desktop) -->
-  <aside class="sidenav">
+  <!-- Sidenav (desktop) -->
+  <aside class="sidenav" aria-label="Índice de secciones">
     <a href="#home" class="sn-link" aria-current="page">Inicio</a>
     <a href="#trabajos" class="sn-link">Trabajos</a>
     <a href="#tareas" class="sn-link">Tareas</a>
@@ -30,8 +38,20 @@
   <main class="content">
     <!-- HOME / HERO -->
     <section id="home" class="section hero">
-      <h1>Diseño & Web — <span class="thin">minimal</span></h1>
-      <p class="lead">Portafolio académico con foco en claridad, tipografía y espacio en blanco. Reúno mis proyectos y tareas (incluye p5.js).</p>
+      <h1>Florencia Ozores</h1>
+
+      <p class="lead">
+        Imagen escrita es una asignatura que se centra en la intersección entre diseño, la programación y arte generativo.
+        Utilizando p5.js como herramienta principal, el curso explora los fundamentos de la programación creativa y su
+        aplicación en el diseño visual interactivo.
+      </p>
+      <p class="lead">
+        A través del creative coding se hace énfasis en el pensamiento computacional como herramienta de diseño,
+        fomentando un enfoque innovador en la resolución de problemas visuales y la creación artística. La integración de
+        herramientas de IA busca ampliar las posibilidades creativas y técnicas, sirviendo como complemento al proceso
+        de diseño y programación.
+      </p>
+
       <ul class="facts">
         <li>Rol: Estudiante · Frontend</li>
         <li>Ubicación: CL</li>
@@ -39,27 +59,37 @@
     </section>
 
     <!-- TRABAJOS -->
-    <section id="trabajos" class="section">
-      <h2 class="section-title">Trabajos destacados</h2>
+    <section id="trabajos" class="section" aria-labelledby="tit-trabajos">
+      <h2 id="tit-trabajos" class="section-title">Trabajos destacados</h2>
+
+      <!-- Usamos imágenes externas para evitar 404 si aún no subes assets -->
       <div class="grid grid-3">
-        <a class="tile" href="#" target="_blank">
-          <figure class="frame"><img src="assets/img/cover-1.jpg" alt="Proyecto 1"></figure>
+        <a class="tile" href="#" target="_blank" rel="noopener">
+          <figure class="frame">
+            <img src="https://images.unsplash.com/photo-1501785888041-af3ef285b470?w=1200&q=80&auto=format&fit=crop" alt="Proyecto 1">
+          </figure>
           <div class="tile-meta">
             <span class="kicker">UI</span>
             <h3>Interfaz editorial</h3>
             <p>Jerarquía tipográfica y ritmo.</p>
           </div>
         </a>
-        <a class="tile" href="#" target="_blank">
-          <figure class="frame"><img src="assets/img/cover-2.jpg" alt="Proyecto 2"></figure>
+
+        <a class="tile" href="#" target="_blank" rel="noopener">
+          <figure class="frame">
+            <img src="https://images.unsplash.com/photo-1496307042754-b4aa456c4a2d?w=1200&q=80&auto=format&fit=crop" alt="Proyecto 2">
+          </figure>
           <div class="tile-meta">
             <span class="kicker">Web</span>
             <h3>Landing minimal</h3>
             <p>Grilla estricta, accesible.</p>
           </div>
         </a>
-        <a class="tile" href="#" target="_blank">
-          <figure class="frame"><img src="assets/img/cover-3.jpg" alt="Proyecto 3"></figure>
+
+        <a class="tile" href="#" target="_blank" rel="noopener">
+          <figure class="frame">
+            <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&q=80&auto=format&fit=crop" alt="Proyecto 3">
+          </figure>
           <div class="tile-meta">
             <span class="kicker">Proto</span>
             <h3>Microinteracciones</h3>
@@ -70,9 +100,9 @@
     </section>
 
     <!-- TAREAS -->
-    <section id="tareas" class="section">
-      <h2 class="section-title">Tareas</h2>
-      <p class="muted">Cada tarea con ficha, links y resumen.</p>
+    <section id="tareas" class="section" aria-labelledby="tit-tareas">
+      <h2 id="tit-tareas" class="section-title">Tareas</h2>
+      <p class="muted">Cada tarea con ficha, link y breve resumen.</p>
 
       <article class="task" id="t1">
         <header class="task-hd">
@@ -82,8 +112,7 @@
         <div class="task-body">
           <p>Exploración tipográfica y módulos. Ritmo vertical y escala.</p>
           <div class="task-links">
-            <a class="btn ghost" href="#" target="_blank" rel="noopener">Demo</a>
-            <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+            <a class="btn primary" href="#" target="_blank" rel="noopener">Visualizar</a>
           </div>
         </div>
       </article>
@@ -96,8 +125,7 @@
         <div class="task-body">
           <p>Componente con estados, teclado y ARIA.</p>
           <div class="task-links">
-            <a class="btn ghost" href="#" target="_blank" rel="noopener">Demo</a>
-            <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+            <a class="btn primary" href="#" target="_blank" rel="noopener">Visualizar</a>
           </div>
         </div>
       </article>
@@ -109,9 +137,9 @@
         </header>
         <div class="task-body">
           <ul class="task-list">
-            <li><a href="https://TUUSUARIO.github.io/encargo1/" target="_blank">Encargo 1</a> · <a href="https://github.com/TUUSUARIO/encargo1" target="_blank">Repo</a></li>
-            <li><a href="https://TUUSUARIO.github.io/encargo2/" target="_blank">Encargo 2</a> · <a href="https://github.com/TUUSUARIO/encargo2" target="_blank">Repo</a></li>
-            <li><a href="https://TUUSUARIO.github.io/encargo3/" target="_blank">Encargo 3</a> · <a href="https://github.com/TUUSUARIO/encargo3" target="_blank">Repo</a></li>
+            <li><a class="btn ghost small" href="https://TUUSUARIO.github.io/encargo1/" target="_blank" rel="noopener">Visualizar</a></li>
+            <li><a class="btn ghost small" href="https://TUUSUARIO.github.io/encargo2/" target="_blank" rel="noopener">Visualizar</a></li>
+            <li><a class="btn ghost small" href="https://TUUSUARIO.github.io/encargo3/" target="_blank" rel="noopener">Visualizar</a></li>
           </ul>
         </div>
       </article>
@@ -123,6 +151,7 @@
     </footer>
   </main>
 
-  <script src="assets/js/main.js" defer></script>
+  <!-- JS con cache-busting -->
+  <script src="assets/js/main.js?v=1" defer></script>
 </body>
 </html>

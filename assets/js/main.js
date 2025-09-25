@@ -1,7 +1,7 @@
-// Año en footer
+// Año en footer (por si lo usas en alguna parte)
 document.querySelectorAll('#year').forEach(n => n.textContent = new Date().getFullYear());
 
-// Tema claro/oscuro
+// Tema claro/oscuro (persistente)
 const themeBtn = document.getElementById('theme-toggle');
 const KEY = 'theme';
 const saved = localStorage.getItem(KEY);
@@ -12,7 +12,7 @@ themeBtn?.addEventListener('click', ()=>{
   localStorage.setItem(KEY, next);
 });
 
-// Scroll suave y marcado activo en sidenav
+// Scroll suave + marcar link activo en sidenav y topbar
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
     const id = a.getAttribute('href').slice(1);
@@ -20,6 +20,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
     if(el){
       e.preventDefault();
       el.scrollIntoView({behavior:'smooth', block:'start'});
+      // actualizar estado activo
       document.querySelectorAll('.sidenav .sn-link,[aria-current="page"]').forEach(l=>l.removeAttribute('aria-current'));
       document.querySelector(`.sidenav a[href="#${id}"]`)?.setAttribute('aria-current','page');
       document.querySelector(`.nav-mobile a[href="#${id}"]`)?.setAttribute('aria-current','page');
@@ -27,7 +28,7 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 
-// Detecta sección visible para resaltar link en el menú lateral
+// Observer para resaltar sección visible en el sidenav (desktop)
 const observer = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
     if(entry.isIntersecting){
