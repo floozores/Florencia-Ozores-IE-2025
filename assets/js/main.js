@@ -1,40 +1,116 @@
-// Año en footer (por si lo usas en alguna parte)
+// Año en footer
 document.querySelectorAll('#year').forEach(n => n.textContent = new Date().getFullYear());
 
-// Tema claro/oscuro (persistente)
-const themeBtn = document.getElementById('theme-toggle');
-const KEY = 'theme';
-const saved = localStorage.getItem(KEY);
-if(saved) document.documentElement.dataset.theme = saved;
-themeBtn?.addEventListener('click', ()=>{
-  const next = document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark';
-  document.documentElement.dataset.theme = next;
-  localStorage.setItem(KEY, next);
+/* =========================
+   Drawer (índice lateral)
+   ========================= */
+const fab = document.getElementById('fabHome');
+const drawer = document.getElementById('drawer');
+const overlay = document.getElementById('drawerOverlay');
+
+function openDrawer(){
+  drawer.classList.add('open');
+  drawer.setAttribute('aria-hidden','false');
+}
+function closeDrawer(){
+  drawer.classList.remove('open');
+  drawer.setAttribute('aria-hidden','true');
+}
+
+fab?.addEventListener('click', ()=>{
+  drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+});
+overlay?.addEventListener('click', closeDrawer);
+
+// ⚠️ No prevenimos el comportamiento por defecto de los <a>.
+// Así el navegador navega a #id de forma nativa.
+// Sólo cerramos el drawer un instante después.
+drawer?.querySelectorAll('.drawer-nav a').forEach(a=>{
+  a.addEventListener('click', ()=>{
+    setTimeout(closeDrawer, 50); // deja que el ancla actúe y luego cierra
+  });
 });
 
-// Scroll suave + marcar link activo en sidenav y topbar
+// También scroll suave para otros enlaces internos (p. ej. "volver arriba")
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click', e=>{
-    const id = a.getAttribute('href').slice(1);
-    const el = document.getElementById(id);
-    if(el){
-      e.preventDefault();
-      el.scrollIntoView({behavior:'smooth', block:'start'});
-      // actualizar estado activo
-      document.querySelectorAll('.sidenav .sn-link,[aria-current="page"]').forEach(l=>l.removeAttribute('aria-current'));
-      document.querySelector(`.sidenav a[href="#${id}"]`)?.setAttribute('aria-current','page');
-      document.querySelector(`.nav-mobile a[href="#${id}"]`)?.setAttribute('aria-current','page');
-    }
+    // si es un enlace dentro del mismo documento, dejamos el default (smooth por CSS)
+    // no hacemos preventDefault aquí.
   });
 });
 
-// Observer para resaltar sección visible en el sidenav (desktop)
-const observer = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      document.querySelectorAll('.sidenav .sn-link').forEach(l=>l.removeAttribute('aria-current'));
-      document.querySelector(`.sidenav a[href="#${entry.target.id}"]`)?.setAttribute('aria-current','page');
+// ESC para cerrar el drawer
+document.addEventListener('keydown', (e)=>{
+  if(e.key === 'Escape' && drawer.classList.contains('open')) closeDrawer();
+});
+
+/* =========================
+   Banner Canvas Animado
+   ========================= */
+(function(){
+  const canvas = document.getElementById('heroCanvas');
+  if(!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const COLORS = {
+    blue: getCssVar('--brand') || '#1d4ed8',
+    sky:  getCssVar('--accent') || '#60a5fa',
+    bg:   '#ffffff'
+  };
+
+  let DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+  let W = 0, H = 0;
+  let circles = [];
+
+  function getCssVar(name){
+    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  }
+
+  function resize(){
+    const rect = canvas.getBoundingClientRect();
+    W = Math.floor(rect.width);
+    H = Math.floor(rect.height);
+    canvas.width = Math.floor(W * DPR);
+    canvas.height = Math.floor(H * DPR);
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    initCircles();
+  }
+
+  function rand(a,b){ return a + Math.random()*(b-a); }
+
+  function initCircles(){
+    const count = Math.max(24, Math.round(W/20)); // un poco más denso
+    circles = [];
+    for(let i=0;i<count;i++){
+      const r = rand(6, 16);
+      circles.push({
+        x: rand(r, W-r),
+        y: rand(r, H-r),
+        r,
+        vx: rand(-0.7, 0.7),
+        vy: rand(-0.7, 0.7),
+        color: Math.random() < 0.5 ? COLORS.blue : COLORS.sky
+      });
     }
-  });
-},{rootMargin:'-40% 0px -55% 0px', threshold:0});
-document.querySelectorAll('main .section[id]').forEach(sec=>observer.observe(sec));
+  }
+
+  function step(){
+    ctx.fillStyle = COLORS.bg;
+    ctx.fillRect(0,0,W,H);
+
+    for(const c of circles){
+      c.x += c.vx; c.y += c.vy;
+      if(c.x < c.r || c.x > W - c.r) c.vx *= -1;
+      if(c.y < c.r || c.y > H - c.r) c.vy *= -1;
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.r, 0, Math.PI*2);
+      ctx.fillStyle = c.color;
+      ctx.fill();
+    }
+    requestAnimationFrame(step);
+  }
+
+  window.addEventListener('resize', resize);
+  resize();
+  step();
+})();
