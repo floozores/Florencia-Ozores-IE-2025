@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Florencia — Portafolio</title>
+  <meta name="description" content="Portafolio académico y tareas de Florencia." />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body class="page">
+  <!-- Topbar móvil -->
+  <header class="topbar">
+    <a href="#home" class="logo">FLORENCIA</a>
+    <nav class="nav-mobile">
+      <a href="#home" aria-current="page">Inicio</a>
+      <a href="#trabajos">Trabajos</a>
+      <a href="#tareas">Tareas</a>
+      <a href="#sobre">Sobre mí</a>
+      <a href="#contacto">Contacto</a>
+      <button id="theme-toggle" class="theme" aria-label="Tema">○</button>
+    </nav>
+  </header>
+
+  <!-- Índice lateral (desktop) -->
+  <aside class="sidenav">
+    <a href="#home" class="sn-link" aria-current="page">Inicio</a>
+    <a href="#trabajos" class="sn-link">Trabajos</a>
+    <a href="#tareas" class="sn-link">Tareas</a>
+    <a href="#sobre" class="sn-link">Sobre mí</a>
+    <a href="#contacto" class="sn-link">Contacto</a>
+  </aside>
+
+  <!-- Contenido principal -->
+  <main class="content">
+    <!-- HOME / HERO -->
+    <section id="home" class="section hero">
+      <h1>Diseño & Web — <span class="thin">minimal</span></h1>
+      <p class="lead">Portafolio académico con foco en claridad, tipografía y espacio en blanco. Reúno mis proyectos y tareas (incluye p5.js).</p>
+      <ul class="facts">
+        <li>Rol: Estudiante · Frontend</li>
+        <li>Ubicación: CL</li>
+        <li>Contacto: <a href="#contacto">aquí</a></li>
+      </ul>
+    </section>
+
+    <!-- TRABAJOS -->
+    <section id="trabajos" class="section">
+      <h2 class="section-title">Trabajos destacados</h2>
+      <div class="grid grid-3">
+        <a class="tile" href="#" target="_blank">
+          <figure class="frame"><img src="assets/img/cover-1.jpg" alt="Proyecto 1"></figure>
+          <div class="tile-meta">
+            <span class="kicker">UI</span>
+            <h3>Interfaz editorial</h3>
+            <p>Jerarquía tipográfica y ritmo.</p>
+          </div>
+        </a>
+        <a class="tile" href="#" target="_blank">
+          <figure class="frame"><img src="assets/img/cover-2.jpg" alt="Proyecto 2"></figure>
+          <div class="tile-meta">
+            <span class="kicker">Web</span>
+            <h3>Landing minimal</h3>
+            <p>Grilla estricta, accesible.</p>
+          </div>
+        </a>
+        <a class="tile" href="#" target="_blank">
+          <figure class="frame"><img src="assets/img/cover-3.jpg" alt="Proyecto 3"></figure>
+          <div class="tile-meta">
+            <span class="kicker">Proto</span>
+            <h3>Microinteracciones</h3>
+            <p>Estados y transiciones sutiles.</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- TAREAS -->
+    <section id="tareas" class="section">
+      <h2 class="section-title">Tareas</h2>
+      <p class="muted">Cada tarea con ficha, links y resumen.</p>
+
+      <article class="task" id="t1">
+        <header class="task-hd">
+          <h3>Tarea 1 · Identidad mínima</h3>
+          <span class="tag">HTML/CSS</span>
+        </header>
+        <div class="task-body">
+          <p>Exploración tipográfica y módulos. Ritmo vertical y escala.</p>
+          <div class="task-links">
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">Demo</a>
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="task" id="t2">
+        <header class="task-hd">
+          <h3>Tarea 2 · Componente UI</h3>
+          <span class="tag">JS/Accesibilidad</span>
+        </header>
+        <div class="task-body">
+          <p>Componente con estados, teclado y ARIA.</p>
+          <div class="task-links">
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">Demo</a>
+            <a class="btn ghost" href="#" target="_blank" rel="noopener">Repo</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="task" id="p5">
+        <header class="task-hd">
+          <h3>p5.js · Encargos</h3>
+          <span class="tag">p5.js</span>
+        </header>
+        <div class="task-body">
+          <ul class="task-list">
+            <li><a href="https://TUUSUARIO.github.io/encargo1/" target="_blank">Encargo 1</a> · <a href="https://github.com/TUUSUARIO/encargo1" target="_blank">Repo</a></li>
+            <li><a href="https://TUUSUARIO.github.io/encargo2/" target="_blank">Encargo 2</a> · <a href="https://github.com/TUUSUARIO/encargo2" target="_blank">Repo</a></li>
+            <li><a href="https://TUUSUARIO.github.io/encargo3/" target="_blank">Encargo 3</a> · <a href="https://github.com/TUUSUARIO/encargo3" target="_blank">Repo</a></li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- SOBRE MÍ -->
+    <section id="sobre" class="section">
+      <h2 class="section-title">Sobre mí</h2>
+      <div class="about">
+        <p>Hola, soy Florencia. Diseño con énfasis en orden, ritmo y claridad. Trabajo con HTML, CSS y JavaScript.</p>
+        <ul class="cols">
+          <li><strong>Herramientas</strong><br>Figma, GitHub</li>
+          <li><strong>Stack</strong><br>HTML · CSS · JS · p5.js</li>
+          <li><strong>Intereses</strong><br>Tipografía, accesibilidad, performance</li>
+        </ul>
+      </div>
+
+      <ol class="timeline">
+        <li><div class="time">2025</div><div class="content">Portafolio minimal — este proyecto.</div></li>
+        <li><div class="time">2024</div><div class="content">Prototipos UI · sistemas de diseño.</div></li>
+        <li><div class="time">2023</div><div class="content">Fundamentos web y semántica.</div></li>
+      </ol>
+    </section>
+
+    <!-- CONTACTO -->
+    <section id="contacto" class="section">
+      <h2 class="section-title">Contacto</h2>
+      <form class="contact" action="https://formspree.io/f/tu-endpoint" method="POST">
+        <label>Nombre <input name="nombre" required></label>
+        <label>Email <input type="email" name="email" required></label>
+        <label>Mensaje <textarea name="mensaje" rows="6" required></textarea></label>
+        <button class="btn primary" type="submit">Enviar</button>
+      </form>
+
+      <div class="links-inline">
+        <a href="https://github.com/TUUSUARIO" target="_blank">GitHub</a>
+        <a href="https://linkedin.com/in/TUUSUARIO" target="_blank">LinkedIn</a>
+        <a href="mailto:tucorreo@example.com">Email</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Florencia</span>
+      <a class="top" href="#home">↑</a>
+    </footer>
+  </main>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
