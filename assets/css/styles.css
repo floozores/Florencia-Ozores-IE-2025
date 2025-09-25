@@ -2,13 +2,13 @@
 :root{
   --bg:#e9ecef;
   --paper:#f7f5f1;
-  --caption:#ffffff;   /* banda blanca */
+  --caption:#ffffff;
   --text:#0f172a;
   --muted:#6b7280;
   --line:#ddd7ce;
 
-  --brand:#1d4ed8;     /* azul títulos */
-  --accent:#60a5fa;    /* celeste: botones y caption */
+  --brand:#1d4ed8;   /* azul títulos */
+  --accent:#60a5fa;  /* celeste botones/caption */
 
   --radius:18px;
   --elev:0 10px 28px rgba(16,24,40,.12);
@@ -31,7 +31,9 @@ body{
   font:16px/1.6 "Inter", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* ====== CONTENEDOR ====== */
+/* Las secciones anclan con margen para que no queden pegadas arriba */
+.section{ padding:2rem 0; scroll-margin-top: 90px; }
+
 .wrap{ max-width:1100px; margin:0 auto; padding:4.5rem 1.2rem 2rem }
 
 /* ====== BANNER CANVAS (más grande) ====== */
@@ -39,11 +41,11 @@ body{
   width:100%; background:#fff; border-bottom:1px solid var(--line);
   box-shadow:0 6px 24px rgba(16,24,40,.08) inset;
 }
-#heroCanvas{ display:block; width:100%; height:240px } /* ↑ antes 170px */
+#heroCanvas{ display:block; width:100%; height:280px } /* alto de la franja */
 
-/* ====== BOTÓN CIRCULAR (casita) ====== */
+/* ====== FAB HOME ====== */
 .fab-home{
-  position:fixed; top:16px; right:16px; z-index:40;
+  position:fixed; top:16px; right:16px; z-index:50;
   width:52px; height:52px; border-radius:50%;
   border:1px solid var(--line);
   background:linear-gradient(180deg,#ffffff,#f6f2eb);
@@ -54,8 +56,8 @@ body{
 }
 .fab-home:hover{ transform:scale(1.07); box-shadow:0 12px 30px rgba(16,24,40,.18) }
 
-/* ====== ÍNDICE LATERAL (drawer) ====== */
-.drawer{ position:fixed; inset:0; z-index:35; pointer-events:none }
+/* ====== DRAWER DERECHO ====== */
+.drawer{ position:fixed; inset:0; z-index:45; pointer-events:none }
 .drawer.open{ pointer-events:auto }
 .drawer-overlay{
   position:absolute; inset:0; background:rgba(15,23,42,.28); opacity:0; transition:opacity .25s ease;
@@ -80,8 +82,7 @@ body{
 }
 .drawer-nav a:hover{ transform:scale(1.05); background:rgba(96,165,250,.12); border-color:var(--accent) }
 
-/* ====== SECCIONES ====== */
-.section{ padding:2rem 0 }
+/* ====== TITULARES ====== */
 .section-title{
   margin:0 0 1rem; padding-bottom:.6rem; 
   border-bottom:1px solid var(--line); 
@@ -96,7 +97,7 @@ body{
 }
 .lead{ color:var(--muted); max-width:70ch }
 
-/* ====== VISUALIZACIÓN (2x2: imagen + banda BLANCA) ====== */
+/* ====== VISUALIZACIÓN (2x2) ====== */
 .grid-2x2{
   display:grid; grid-template-columns:repeat(2,1fr); gap:1.2rem;
 }
@@ -107,8 +108,6 @@ body{
   box-shadow:var(--elev-soft); overflow:hidden;
   background:var(--paper); border:1px solid var(--line);
 }
-
-/* parte superior: imagen (con zoom al hover) */
 .media{
   position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--paper);
 }
@@ -117,17 +116,12 @@ body{
   transition: transform .35s ease, filter .35s ease;
 }
 .card:hover .media img{ transform: scale(1.1) }
-
-/* banda inferior BLANCA y letras CELESTES */
 .caption-band{
   background:var(--caption);
   display:flex; align-items:center; justify-content:center;
-  padding:1.05rem .8rem;
-  border-top:1px solid var(--line);
+  padding:1.05rem .8rem; border-top:1px solid var(--line);
 }
-.caption-band h3{
-  margin:0; font-weight:700; color:var(--accent); letter-spacing:.02em;
-}
+.caption-band h3{ margin:0; font-weight:700; color:var(--accent); letter-spacing:.02em }
 
 /* ====== PROYECTOS ====== */
 .projects-intro{ color:var(--muted); max-width:70ch; margin:0 0 1rem }
@@ -138,7 +132,7 @@ body{
 .task-body{ display:grid; gap:.6rem; padding:.6rem 0 1rem }
 .task-links{ display:flex; gap:.6rem; flex-wrap:wrap }
 
-/* ====== BOTONES: inversión de colores al hover ====== */
+/* Botones con inversión de colores al hover */
 .btn{
   display:inline-block; padding:.75rem 1.05rem; border-radius:999px;
   text-decoration:none; border:1px solid var(--accent);

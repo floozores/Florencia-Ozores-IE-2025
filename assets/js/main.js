@@ -2,7 +2,7 @@
 document.querySelectorAll('#year').forEach(n => n.textContent = new Date().getFullYear());
 
 /* =========================
-   Drawer (índice lateral)
+   Drawer lateral derecho
    ========================= */
 const fab = document.getElementById('fabHome');
 const drawer = document.getElementById('drawer');
@@ -22,20 +22,19 @@ fab?.addEventListener('click', ()=>{
 });
 overlay?.addEventListener('click', closeDrawer);
 
-// ⚠️ No prevenimos el comportamiento por defecto de los <a>.
-// Así el navegador navega a #id de forma nativa.
-// Sólo cerramos el drawer un instante después.
-drawer?.querySelectorAll('.drawer-nav a').forEach(a=>{
-  a.addEventListener('click', ()=>{
-    setTimeout(closeDrawer, 50); // deja que el ancla actúe y luego cierra
-  });
-});
-
-// También scroll suave para otros enlaces internos (p. ej. "volver arriba")
-document.querySelectorAll('a[href^="#"]').forEach(a=>{
-  a.addEventListener('click', e=>{
-    // si es un enlace dentro del mismo documento, dejamos el default (smooth por CSS)
-    // no hacemos preventDefault aquí.
+// FORZAR redirección/scroll a secciones (sin depender del comportamiento por defecto)
+drawer?.querySelectorAll('.drawer-nav a[href^="#"]').forEach(a=>{
+  a.addEventListener('click', (e)=>{
+    const hash = a.getAttribute('href');
+    const id = hash ? hash.slice(1) : null;
+    const el = id ? document.getElementById(id) : null;
+    if(el){
+      e.preventDefault();                       // evitamos interferencias
+      el.scrollIntoView({behavior:'smooth', block:'start'});
+      // Actualiza la URL (sin provocar otro salto)
+      history.replaceState(null, '', '#' + id);
+      closeDrawer();
+    }
   });
 });
 
@@ -79,7 +78,7 @@ document.addEventListener('keydown', (e)=>{
   function rand(a,b){ return a + Math.random()*(b-a); }
 
   function initCircles(){
-    const count = Math.max(24, Math.round(W/20)); // un poco más denso
+    const count = Math.max(28, Math.round(W/18));
     circles = [];
     for(let i=0;i<count;i++){
       const r = rand(6, 16);
@@ -102,6 +101,7 @@ document.addEventListener('keydown', (e)=>{
       c.x += c.vx; c.y += c.vy;
       if(c.x < c.r || c.x > W - c.r) c.vx *= -1;
       if(c.y < c.r || c.y > H - c.r) c.vy *= -1;
+
       ctx.beginPath();
       ctx.arc(c.x, c.y, c.r, 0, Math.PI*2);
       ctx.fillStyle = c.color;

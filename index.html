@@ -5,22 +5,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Portafolio Imágen Escrita 2025</title>
   <meta name="description" content="Portafolio Imágen Escrita 2025 — Florencia Ozores. Diseño, programación y arte generativo." />
-  <link rel="stylesheet" href="assets/css/styles.css?v=11" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=14" />
 </head>
 <body>
 
-  <!-- Botón circular (casita) que abre el índice lateral -->
+  <!-- Botón circular (casita) que abre/cierra el ÍNDICE LATERAL DERECHO -->
   <button class="fab-home" id="fabHome" aria-label="Abrir índice">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
       <path d="M3 10.5L12 3l9 7.5V21a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1v-10.5z" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </button>
 
-  <!-- Índice lateral (drawer) -->
-  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Índice de secciones">
+  <!-- ÍNDICE LATERAL DERECHO (drawer) -->
+  <aside class="drawer" id="drawer" aria-hidden="true" aria-label="Índice de secciones" role="navigation">
     <div class="drawer-panel">
       <nav class="drawer-nav">
-        <!-- IMPORTANTE: enlaces ancla nativos; JS NO los intercepta -->
+        <!-- Enlaces ANCLA (JS forzará el scroll) -->
         <a href="#home">Inicio</a>
         <a href="#visualizacion">Visualización</a>
         <a href="#proyectos">Proyectos</a>
@@ -30,14 +30,14 @@
     <button class="drawer-overlay" id="drawerOverlay" aria-label="Cerrar índice"></button>
   </aside>
 
-  <!-- ── Franja con patrón animado (canvas) ───────────────────────────── -->
-  <section class="banner">
-    <canvas id="heroCanvas" aria-hidden="true"></canvas>
+  <!-- Franja animada -->
+  <section class="banner" aria-hidden="true">
+    <canvas id="heroCanvas"></canvas>
   </section>
 
   <!-- Contenido -->
   <main class="wrap">
-    <!-- HERO / INICIO -->
+    <!-- INICIO -->
     <section id="home" class="section hero">
       <h1>Portafolio Imágen Escrita 2025</h1>
 
@@ -101,7 +101,7 @@
         <div class="task-body">
           <p class="sub">Ciencia Exacta</p>
           <div class="task-links">
-            <a class="btn invert" href="https://wiki.ead.pucv.cl/Encargo_1_IE_-_Ciencia_Exacta_/_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
+            <a class="btn" href="https://wiki.ead.pucv.cl/Encargo_1_IE_-_Ciencia_Exacta_/_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
           </div>
         </div>
       </article>
@@ -111,7 +111,7 @@
         <div class="task-body">
           <p class="sub">Cuadrados Ensanchados</p>
           <div class="task-links">
-            <a class="btn invert" href="https://wiki.ead.pucv.cl/Encargo_2_IE_-_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
+            <a class="btn" href="https://wiki.ead.pucv.cl/Encargo_2_IE_-_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
           </div>
         </div>
       </article>
@@ -121,7 +121,7 @@
         <div class="task-body">
           <p class="sub">Triángulos en Movimiento</p>
           <div class="task-links">
-            <a class="btn invert" href="https://wiki.ead.pucv.cl/Encargo_3_IE_-_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
+            <a class="btn" href="https://wiki.ead.pucv.cl/Encargo_3_IE_-_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
           </div>
         </div>
       </article>
@@ -131,7 +131,7 @@
         <div class="task-body">
           <p class="sub">Círculos Circundantes</p>
           <div class="task-links">
-            <a class="btn invert" href="https://wiki.ead.pucv.cl/Encargo_4_IE_-_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
+            <a class="btn" href="https://wiki.ead.pucv.cl/Encargo_4_IE_-_Florencia_Ozores" target="_blank" rel="noopener">Visualizar</a>
           </div>
         </div>
       </article>
@@ -154,6 +154,6 @@
     </footer>
   </main>
 
-  <script src="assets/js/main.js?v=7" defer></script>
+  <script src="assets/js/main.js?v=10" defer></script>
 </body>
 </html>
